@@ -5,7 +5,7 @@ use solver::{BilateralConstraint2, BilateralGroundConstraint, IntegrationParamet
              UnilateralConstraint2, UnilateralGroundConstraint};
 use object::BodySet;
 
-pub trait ContactModel<N: Real>: 'static {
+pub trait ContactModel<N: Real>: 'static + Sync + Send {
     fn nconstraints(&self) -> usize;
     fn build_constraints(
         &self,

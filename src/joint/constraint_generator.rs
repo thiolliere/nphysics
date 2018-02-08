@@ -8,7 +8,7 @@ use solver::{BilateralConstraint2, BilateralGroundConstraint, IntegrationParamet
 pub type ConstraintHandle = usize;
 
 // FIXME: keep this on this module?
-pub trait ConstraintGenerator<N: Real>: Any {
+pub trait ConstraintGenerator<N: Real>: Any + Send + Sync {
     fn nconstraints(&self) -> usize;
     fn anchors(&self) -> (BodyHandle, BodyHandle);
     fn build_constraints(
